@@ -20,8 +20,9 @@
         print "<p>É um prazer te conhecer, <strong>$nome $snome</strong>! Este é o meu site! </p>";
 
         ?>
-        <p><a href="javascript:history.go(-1)">Voltar para a página anterior</a></p>
+
     </main>
+    <p><a href="javascript:history.go(-1)">Voltar para a página anterior</a></p>
 </body>
 
 </html>
