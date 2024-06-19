@@ -16,7 +16,7 @@
 
 <?php
 date_default_timezone_set("America/Sao_Paulo");
-print "Hoje é dia" . date("d/M/Y ");
+print "Hoje é dia " . date("d/M/Y ");
 print "e a hora atual é " . date("G:i:s T");
 ?>
 
