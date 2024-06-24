@@ -15,14 +15,15 @@
     <main>
 
         <?php
-        $numero = $_GET["numero"];
+        $numero = $_GET["numero"] ?? 0;
         $r1 = $numero + 1;
         $r2 = $numero - 1;
         print "<p>O numero escolhido foi <strong>$numero</strong></p>";
         print "<p>O seu antecessor é $r2</p>";
         print "<p>O seu sucessor é $r1</p>";
         ?>
-        <input type="submit" value="Voltar">
+        <form action="index.html" method="post">
+            <input type="submit" value="⬅️ Voltar ">
     </main>
 </body>
 
