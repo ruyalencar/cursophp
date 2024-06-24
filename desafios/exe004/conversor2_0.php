@@ -35,9 +35,9 @@
 
                 $padrão = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
 
-                print "<p><strong>Seus " . numfmt_format_currency($padrão, $valorEmReal, "BRL") . " equivalem a " . numfmt_format_currency($padrão, $valorEmDolar, "USD") . " $fim</strong></p>";
+                print "<p><strong>Seus " . numfmt_format_currency($padrão, $valorEmReal, "BRL") . " equivalem a " . numfmt_format_currency($padrão, $valorEmDolar, "USD") . " ($fim)</strong></p>";
 
-                print "<p><strog>* Cotação fixa de " . numfmt_format_currency($padrão, $cotacao, "BRL")  . " informada diretamente no código.</strog></p>"
+                print "<p><strog>* Cotação de " . numfmt_format_currency($padrão, $cotacao, "BRL") . " Retirado de https://www.bcb.gov.br/</strog></p>"
 
                 ?>
                 <form action="index.html" method="post">
