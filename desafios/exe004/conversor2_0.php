@@ -43,8 +43,6 @@
                 <form action="index.html" method="post">
                         <input type="submit" value="⬅️ Voltar ">
         </main>
-        </main>
-
 </body>
 
 </html>
