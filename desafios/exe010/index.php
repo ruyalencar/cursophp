@@ -11,7 +11,6 @@
 <body>
     <main>
         <h1>Calculando a sua idade</h1>
-
         <?php
         $ano1 = $_GET['ano'] ?? 0;
         $ano2 = $_GET['ano2'] ?? 0;
