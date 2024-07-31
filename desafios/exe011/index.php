@@ -44,10 +44,10 @@
 
         if ($porcent > 0) {
             $reajuste = ReajustePositivo($p, $porcent);
-            $texto = "O produto que custava R$$p, com $porcent% de aumento vai passar a custar R$$reajuste a partir de agora. ";
+            $texto = "O produto que custava R$" . number_format($p, 2, ",", ".") . ", com <strong>$porcent% de aumento</strong> vai passar a custar R$" . number_format($reajuste, 2, ",", ".") . "  a partir de agora. ";
         } elseif ($porcent < 0) {
             $reajuste = ReajusteNegativo($p, $porcent);
-            $texto = "O produto que custava R$$p, com o desconto de $porcent% de aumento vai passar a custar R$$reajuste a partir de agora.";
+            $texto = "O produto que custava R$" . number_format($p, 2, ",", ".") . ", com o desconto de <strong>$porcent% </strong> vai passar a custar R$" . number_format($reajuste, 2, ",", ".") . "  a partir de agora.";
         } else {
             return "O preço do produto permanece o mesmo.";
         }
