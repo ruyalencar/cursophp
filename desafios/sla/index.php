@@ -18,7 +18,7 @@
         <h1>Reajustador de Preços</h1>
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get">
             <label for="preco">Preço do Produto</label>
-            <input type="number" name="preco" id="precoid" value="<?= $p ?>" step="0.001">
+            <input type="number" name="preco" id="precoid" value="<?= $p ?>" step="0.01">
             <label for="reajuste">Qual será o porcentual de reajuste? <strong><span id="valorPorcentagem"><?= $porcent ?>%</span></strong></label>
             <input type="range" name="porcen" id="porcenid" min="-100" max="100" value="<?= $porcent ?>" oninput="atualizarValor(this.value)">
             <script>
@@ -32,22 +32,16 @@
     <section>
         <h2>Resultado do Reajuste</h2>
         <?php
-        function ReajustePositivo($p, $porcent)
+        function Reajuste($p, $porcent)
         {
             return $p * (1 + $porcent / 100);
         }
-        function ReajusteNegativo($p, $porcent)
-        {
-            return $p * (1 - abs($porcent) / 100);
-        }
 
-
-        if ($porcent > 0) {
-            $reajuste = ReajustePositivo($p, $porcent);
-            $texto = "O produto que custava R$" . number_format($p, 2, ",", ".") . ", com <strong>$porcent% de aumento</strong> vai passar a custar R$" . number_format($reajuste, 2, ",", ".") . "  a partir de agora. ";
-        } elseif ($porcent < 0) {
-            $reajuste = ReajusteNegativo($p, $porcent);
-            $texto = "O produto que custava R$" . number_format($p, 2, ",", ".") . ", com o desconto de <strong>$porcent% </strong> vai passar a custar R$" . number_format($reajuste, 2, ",", ".") . "  a partir de agora.";
+        if ($porcent != 0) {
+            $reajuste = Reajuste($p, $porcent);
+            $acao = $porcent > 0 ? "aumento" : "desconto";
+            $porcent = abs($porcent); // Para mostrar a porcentagem como positiva no texto
+            $texto = "O produto que custava R$" . number_format($p, 2, ",", ".") . ", com <strong>$porcent% de $acao</strong>, vai passar a custar R$" . number_format($reajuste, 2, ",", ".") . " a partir de agora.";
         } else {
             $texto = "O preço do produto permanece o mesmo.";
         }
