@@ -10,6 +10,9 @@
 
 <body>
     <main>
+        <?php
+        $seg = $_GET['s1'] ?? 0;
+        ?>
         <h1>Calculadora de Tempo</h1>
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get">
             <label for="Segundos">Qual é o total de segundos?</label>
@@ -20,31 +23,29 @@
     <section>
         <h2>Totalizando tudo</h2>
         <?php
-        $seg = $_GET['s1'];
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $segundos = intval($_GET['s1']);
+        $sobra = $seg;
 
-            $semanas = intval($seg / (7 * 24 * 3600));
-            $segundos %= 7 * 24 * 3600;
+        $semanas = (int)($sobra / 604_800);
+        $sobra = $sobra % 604_800;
 
-            $dias = floor($segundos / (24 * 3600));
-            $segundos %= 24 * 3600;
+        $dias = (int)($sobra / 86_400);
+        $sobra = $sobra % 86_400;
 
-            $horas = floor($segundos / 3600);
-            $segundos %= 3600;
+        $horas = (int)($sobra / 3_600);
+        $sobra = $sobra % 3_600;
 
-            $minutos = floor($segundos / 60);
-            $segundos %= 60;
+        $minutos = (int)($sobra / 60);
+        $sobra = $sobra % 60;
 
-            print "<p>Analisando o calor que digitou, $seg segundos equivalem a um total de:</p>";
-            print "<lu>";
-            print "<li>$semanas semanas</li>";
-            print "<li>$dias dias</li>";
-            print "<li>$horas horas</li>";
-            print "<li>$minutos minutos</li>";
-            print "<li>$segundos segundos</li>";
-            print "</lu>";
-        }
+        print "<p>Analisando o calor que digitou,<strong>" . number_format($seg, 0, ",", ".") . " segundos</strong> equivalem a um total de:</p>";
+        print "<lu>";
+        print "<li>$semanas semanas</li>";
+        print "<li>$dias dias</li>";
+        print "<li>$horas horas</li>";
+        print "<li>$minutos minutos</li>";
+        print "<li>$sobra segundos</li>";
+        print "</lu>";
+
         ?>
 
 
