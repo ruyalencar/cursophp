@@ -18,7 +18,7 @@
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get">
             <label for="salario">Salário</label>
             <input type="number" name="sa1" id="idsa1" value="<?= $salario ?>" step=" 0.001">
-            <p>considerando o salário mínimo de <strong>R$1.412,00</strong> </p>
+            <p>considerando o salário mínimo de <strong>R$<?= number_format($sm, 2, ",", ".") ?></strong> </p>
             <input type="submit" value="Calcular">
         </form>
     </main>

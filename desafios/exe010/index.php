@@ -12,22 +12,22 @@
     <main>
         <h1>Calculando a sua idade</h1>
         <?php
+        $anoAtual = date("Y");
         $ano1 = $_GET['ano'] ?? 0;
-        $ano2 = $_GET['ano2'] ?? 0;
+        $ano2 = $_GET['ano2'] ?? $anoAtual;
         ?>
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get">
             <label for="ano1">Em que ano você nesceu?</label>
-            <input type="number" name="ano" id="anoid">
+            <input type="number" name="ano" id="anoid" max="<?= $anoAtual ?>" required>
             <label for="">Quer saber a sua idade em que ano? Atualmente estamos no ano de <span id="anoAtual"></span></label>
-            <input type="number" name="ano2" id="ano2id">
+            <input type="number" name="ano2" id="ano2id" value="<?= $anoAtual ?>">
             <input type="submit" value="Qual será a minha idade?">
         </form>
     </main>
     <section>
         <h2><strong>Resultado</strong></h2>
         <?php
-        $anoAtual = date("Y");
-        $r =  $ano2 - $ano1;
+        $r =  ($ano2 - $ano1);
         print "Quem nasceu em $ano1 vai ter <strong>$r anos</strong> em $ano2!";
         ?>
     </section>

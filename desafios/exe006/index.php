@@ -11,7 +11,7 @@
 <body>
     <?php
     $dividendo = $_GET['dd1'] ?? 0;
-    $divisor = $_GET['ds1'] ?? 0;
+    $divisor = $_GET['ds1'] ?? 1;
     ?>
     <main>
         <h1>Anatomia de uma Divisão</h1>
@@ -19,21 +19,26 @@
             <label for="dividendo">Dividendo</label>
             <input type="number" name="dd1" id="iddd1" value="<?= $dividendo ?>">
             <label for="divisor">Divisor</label>
-            <input type="number" name="ds1" id="idds1" value="<?= $divisor ?>">
+            <input type="number" name="ds1" id="idds1" min="1" value="<?= $divisor ?>">
             <input type="submit" value="Analisar">
         </form>
     </main>
     <section id="Divisão">
         <h2>Estrutura da Divisão</h2>
         <?php
-        $divi = $dividendo / $divisor;
+        $divi = intdiv($dividendo, $divisor);
         $res = $dividendo % $divisor;
-        print "Dividendo =" . number_format($dividendo);
-        print " Divisor =" . number_format($divisor);
-        print " Quociente =" .  number_format($divi);
-        print " Resto =" . number_format($res);
-
         ?>
+        <table class="divisao">
+            <tr>
+                <td><?= $dividendo ?></td>
+                <td><?= $divisor ?></td>
+            </tr>
+            <tr>
+                <td><?= $res ?></td>
+                <td><?= $divi ?></td>
+            </tr>
+        </table>
 
     </section>
 </body>
